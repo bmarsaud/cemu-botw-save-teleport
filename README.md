@@ -19,7 +19,7 @@ Once downloaded you can either double click on it if you don't want to use any o
 ### Familiar with "dev things"
 This utility is a CLI Node.js script, you can launch it using the following commands :
 
-```
+```shell
 git clone https://github.com/bmarsaud/cemu-botw-save-teleport
 cd cemu-botw-save-teleport
 npm install
@@ -28,6 +28,9 @@ npm link
 ```
 
 ## Usage
+
+![demo](.github/demo.gif)
+
 cemu-botw-save-teleport is available with the following options :
 
 |Option|Description|
@@ -36,8 +39,8 @@ cemu-botw-save-teleport is available with the following options :
 |`--posY`|Player Y position|
 |`--posZ`|Player Z position|
 |`--savePath`|To edit a particular save file. The path to the save file.|
-|`--dirPath`|To edit the most recent save. The path to the directory containing the `0, 1, 2, 3, 4, 5` save folders|
-|`--promptSaves`|When used with `--dirPath`, ask the user which save to edit among the save list|
+|`--saveDir`|To edit the most recent save. The path to the directory containing the `0, 1, 2, 3, 4, 5` save folders|
+|`--promptSaves`|When used with `--saveDir`, ask the user which save to edit among the save list|
 
 If needed options are missing, it will be asked in the command line.
 
