@@ -6,6 +6,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
             '--savePath': String,
+            '--saveDir': String,
             '--posX': Number,
             '--posY': Number,
             '--posZ': Number,
@@ -17,6 +18,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     return {
         savePath: args['--savePath'],
+        saveDir: args['--saveDir'],
         posX: args['--posX'],
         posY: args['--posY'],
         posZ: args['--posZ'],
@@ -26,7 +28,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 async function promptMissingOptions(options) {
     let questions = [];
 
-    if(!options.savePath) {
+    if(!options.savePath && !options.saveDir) {
         questions.push({
             name: 'savePath',
             message: 'BOTW save file path to edit:'
