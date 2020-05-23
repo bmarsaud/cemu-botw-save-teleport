@@ -99,6 +99,8 @@ class SaveEditor {
         let backupPath = path.join(path.dirname(this.filePath), backupName);
 
         fs.copyFileSync(this.filePath, backupPath);
+        console.log('Save backed-up to "' + backupPath + '"');
+
         fs.writeFileSync(this.filePath, this.fileBuffer);
     }
 }

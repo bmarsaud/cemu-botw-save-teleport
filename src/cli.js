@@ -1,5 +1,6 @@
 const arg = require('arg');
 const inquirer = require('inquirer');
+const cemuBotwSaveTeleport = require('./main');
 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
@@ -27,7 +28,7 @@ async function promptMissingOptions(options) {
 
     if(!options.savePath) {
         questions.push({
-            name: 'filePath',
+            name: 'savePath',
             message: 'BOTW save file path to edit:'
         });
     }
@@ -63,7 +64,8 @@ async function promptMissingOptions(options) {
 async function cli(args) {
     let options = parseArgumentsIntoOptions(args);
     options = await promptMissingOptions(options);
-    console.log(options);
+
+    cemuBotwSaveTeleport(options);
 }
 
 module.exports = {
