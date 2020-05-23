@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 const HASHES =[
     0x0bee9e46, 'MAP',
@@ -88,6 +89,17 @@ class SaveEditor {
         this.fileBuffer.writeFloatBE(x, this.offsets.PLAYER_POSITION);
         this.fileBuffer.writeFloatBE(y, this.offsets.PLAYER_POSITION + 8);
         this.fileBuffer.writeFloatBE(z, this.offsets.PLAYER_POSITION + 16);
+    }
+
+    /**
+     * Create a backup save in the same folder and overwrite the current save with the modifications
+     */
+    save() {
+        let backupName = path.basename(this.filePath) + '.' + Date.now() + '.back'; 
+        let backupPath = path.join(path.dirname(this.filePath), backupName);
+
+        fs.copyFileSync(this.filePath, backupPath);
+        fs.writeFileSync(this.filePath, this.fileBuffer);
     }
 }
 
