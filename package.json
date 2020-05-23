@@ -6,6 +6,10 @@
   "bin": {
     "cemu-botw-save-teleport": "bin/cemu-botw-save-teleport"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmarsaud/cemu-botw-save-teleport.git"
+  },
   "author": "bmarsaud",
   "license": "MIT",
   "dependencies": {
