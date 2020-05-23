@@ -2,7 +2,9 @@ const SaveEditor = require('./save-editor');
 const saveChoser = require('./save-choser');
 
 function cemuBotwSaveTeleport(options) {
-    if(options.saveDir) {
+    if(options.chosenSave) {
+        options.savePath = options.chosenSave;
+    } else if(options.saveDir) {
         options.savePath = saveChoser.getMostRecentSave(options.saveDir);
     }
 

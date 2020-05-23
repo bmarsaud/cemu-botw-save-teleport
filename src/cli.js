@@ -1,12 +1,14 @@
 const arg = require('arg');
 const inquirer = require('inquirer');
 const cemuBotwSaveTeleport = require('./main');
+const saveChoser = require('./save-choser');
 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
             '--savePath': String,
             '--saveDir': String,
+            '--promptSaves': Boolean,
             '--posX': Number,
             '--posY': Number,
             '--posZ': Number,
@@ -18,6 +20,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     return {
         savePath: args['--savePath'],
+        promptSaves: args['--promptSaves'],
         saveDir: args['--saveDir'],
         posX: args['--posX'],
         posY: args['--posY'],
@@ -32,6 +35,23 @@ async function promptMissingOptions(options) {
         questions.push({
             name: 'savePath',
             message: 'BOTW save file path to edit:'
+        });
+    }
+
+    if(options.saveDir && options.promptSaves) {
+        let saves = saveChoser.getSavesInfo(options.saveDir);
+        saves.sort((a, b) => b.date - a.date);
+
+        let choices = saves.map(elem => ({
+            name: 'Save #' + elem.id + ' - ' + elem.date.toLocaleString(),
+            value: elem.path
+        }));
+
+        questions.push({
+            name: 'chosenSave',
+            message: 'Which save do you want to edit?',
+            type: 'list',
+            choices: choices
         });
     }
 
