@@ -1,0 +1,11 @@
+{
+  "name": "cemu-botw-save-teleport",
+  "version": "1.0.0",
+  "description": "Cemu BOTW save teleport utility",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "bmarsaud",
+  "license": "ISC"
+}
