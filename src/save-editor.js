@@ -66,6 +66,29 @@ class SaveEditor {
 			}
 		}
     }
+
+    /**
+     * Get the user position
+     */
+    getPosition() {
+        let x = this.fileBuffer.readFloatBE(this.offsets.PLAYER_POSITION);
+        let y = this.fileBuffer.readFloatBE(this.offsets.PLAYER_POSITION + 8);
+        let z = this.fileBuffer.readFloatBE(this.offsets.PLAYER_POSITION + 16);
+
+        return [x, y, z];
+    }
+
+    /**
+     * Set the player position
+     * @param {number} x The X user position
+     * @param {number} y The Y user position
+     * @param {number} z The Z user position
+     */
+    setPosition(x, y, z) {
+        this.fileBuffer.writeFloatBE(x, this.offsets.PLAYER_POSITION);
+        this.fileBuffer.writeFloatBE(y, this.offsets.PLAYER_POSITION + 8);
+        this.fileBuffer.writeFloatBE(z, this.offsets.PLAYER_POSITION + 16);
+    }
 }
 
 module.exports = SaveEditor;
